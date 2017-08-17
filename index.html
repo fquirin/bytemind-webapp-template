@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<!-- web app settings -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+	<title>ByteMind WebApp</title>
+	<meta name="application-name" content="ByteMind WebApp"/>
+	<meta name="apple-mobile-web-app-title" content="ByteMind WebApp">
+	<meta name="description" content="ByteMind WebApp template">
+	<meta name="theme-color" content="#2F3035">
+	<link rel="icon" sizes="192x192" href="img/icon.png">
+	<link rel="apple-touch-icon" href="img/icon.png">
+	<meta property="og:image" content="img/icon.png"/>
+	<!-- imports -->
+	<link rel="stylesheet" href="css/bytemind-webapp-style.css" title='main'>
+	<!-- for low prio stylesheets and JS see end-of-body -->
+	</script>
+	<style>
+		/* ---- Page global ---- */
+		
+		::-webkit-scrollbar {
+			width: 5px;
+			height: 5px;
+			background: rgba(0,0,0,0.05);
+		}
+		::-webkit-scrollbar-thumb {
+			border-radius: 5px;
+			background: rgba(0,0,0,0.10);
+		}
+		* {
+			box-sizing: border-box;
+			font-family: 'Roboto', sans-serif;
+			-webkit-text-size-adjust: 100%;
+		}
+		html {
+			background: #c8c8c8;
+			height: 100%;
+		}
+		body {
+			margin: 0;
+			padding: 8px;
+			height: 100%;
+		}
+		.bytemind-standalone-app body {
+			padding: 0px;
+		}
+		input:focus,
+		select:focus,
+		textarea:focus,
+		button:focus {
+			outline: none;
+		}
+		::-moz-focus-inner {
+			border:0;
+		}
+		button {
+			-webkit-user-select: none;
+			-webkit-touch-callout: none;
+			-moz-user-select: none;    
+			-ms-user-select: none;      
+			user-select: none;
+			touch-action: manipulation;
+		}
+	</style>
+</head>
+<body>
+	<div id="bytemind-webapp-window">
+		<!-- Header -->
+		<div id="bytemind-webapp-header">
+			<div id="bytemind-header-content">
+				<div class="bytemind-page-title">Welcome</div>
+			</div>
+			<div id="bytemind-header-accent"></div>
+		</div>
+		<!-- Top menu -->
+		<div id="bytemind-webapp-top-bar">
+			<div id="bytemind-menu-btn-ctrl" class="bytemind-nav-bar-button bytemind-button"><i class="material-icons md-24">&#xE5D2;</i><span>Menu</span></div>
+			<div id="bytemind-webapp-top-bar-dynamic"><!-- code --></div>
+			<div id="bytemind-account-btn" class="bytemind-nav-bar-button bytemind-button"><i class="material-icons md-24">&#xE853;</i><span>Account</span></div>
+		</div>
+		<!-- Side menu -->
+		<div id="my-bytemind-side-menu-interlayer" class="bytemind-side-menu-interlayer"></div>
+		<div id="my-bytemind-side-menu" class="bytemind-side-menu">
+			<div id="my-bytemind-menu-close" class="bytemind-side-menu-close-btn bytemind-button"><i class="material-icons md-24">&#xE314;</i></div>
+			<!-- code -->
+		</div>
+		<div id="my-bytemind-side-menu-swipe" class="bytemind-swipe-area-left"></div>
+		<!-- Main -->
+		<div id="bytemind-webapp-main">
+			<!-- page sections -->
+			<div id="bytemind-main-views">
+				<!-- page 1 -->
+				<div id="page1" class="bytemind-view">
+					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+					<p id='testend'>end</p>
+				</div>
+				<!-- page 2 -->
+				<div id="page2" class="bytemind-view">
+					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+					<div id="p2-dynamic-content"></div>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<div id="bytemind-webapp-footer">
+			<div id="bytemind-refresh-btn" class="bytemind-button"><i class="material-icons md-24">&#xE5D5;</i></div>
+			<a href="http://bytemind.de" target="_blank">bytemind.de</a>
+			<a href="">Imprint</a>
+			<div id="bytemind-fullscreen-btn" class="bytemind-button"><i class="material-icons md-24">&#xE56B;</i></div>
+		</div>
+		<!-- Overlay buttons -->
+		<div id="bytemind-fullscreen-overlay-btn" class="bytemind-button" style="display:none;"><i class="material-icons md-24">&#xE56B;</i></div>
+	</div>
+<!-- LOW PRIO STYLESHEETS -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,600" rel="stylesheet">
+<link rel="stylesheet" href="css-static/bytemind-lib-1.0.3.css" title='main'>
+<!-- JS -->
+<script src="js-static/jquery-3.1.1.min.js"></script>
+<script src="js-static/hammer.min.js"></script>
+<script src="js-static/hammer-time.min.js"></script>
+<script src="js-static/sjcl.js"></script>
+<script src="js/bytemind.core.js"></script>
+<script src="js/bytemind.local.js"></script>
+<script src="js/bytemind.ui.js"></script>
+<script src="js/bytemind.account.js"></script>
+<script src="js-static/bytemind.ui.carousel-1.0.1.js"></script>
+<script src="js-static/bytemind.ui.sidemenu-1.0.2.js"></script>
+<script src="js/bytemind.mysite.js"></script>
+</body>
+</html>
