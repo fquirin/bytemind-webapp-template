@@ -70,18 +70,18 @@ function buildNavigation(){
 	ByteMind.page.registerSectionWithNavButton("Home", {
 		sectionName : HOME,
 		viewId : "page1", 		//use this if you have an ID else use 'view' and give the element
-		title : "ByteMind P1",
+		title : "ByteMind Home",
 		headerTitle : "Home",
 		description : "This is the landing page."
 	}, sideMenuEle);
 	
-	//More
-	ByteMind.page.registerSectionWithNavButton("More", {
-		sectionName : "more",
+	//Settings
+	ByteMind.page.registerSectionWithNavButton("Settings", {
+		sectionName : "settings",
 		viewId : "page2",
-		title : "ByteMind P2",
-		headerTitle : "Page 2",
-		description : "This is the other page.",
+		title : "ByteMind Settings",
+		headerTitle : "Settings",
+		description : "This is the settings page.",
 		onPageLoad : function(){
 			/*
 			var content = document.getElementById('p2-dynamic-content');
@@ -93,6 +93,23 @@ function buildNavigation(){
 			*/
 		}
 	}, sideMenuEle);
+	
+	//Imprint
+	ByteMind.page.registerSectionWithNavButton("Imprint", {
+		sectionName : "imprint",
+		viewId : "page3",
+		title : "ByteMind Imprint",
+		headerTitle : "Imprint",
+		description : "This is the imprint page.",
+	}, sideMenuEle);
+	
+	//Add logout button?
+	if (ByteMind.account){
+		ByteMind.page.registerMenuButton("Logout", {
+			href : "/logout.html",
+			onclick : function() { ByteMind.page.sideMenu.close(); 	ByteMind.account.logoutAction(); }
+		}, sideMenuEle);
+	}
 	
 	//use side menu?
 	/*

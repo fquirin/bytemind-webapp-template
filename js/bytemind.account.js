@@ -203,7 +203,7 @@ function bytemind_build_account(){
 	Account.setup = function(){
 		//try restore from localStorage to avoid login popup - refresh required after e.g. 1 day = 1000*60*60*24
 		var account = ByteMind.data.get('account');
-		if (account && account.lastRefresh && ((new Date().getTime() - account.lastRefresh) < (1000*60*60*12))){
+		if (account && account.userToken && account.lastRefresh && ((new Date().getTime() - account.lastRefresh) < (1000*60*60*12))){
 			userId = account.userId;
 			userToken = account.userToken;
 			userName = account.userName;	if (userName)	ByteMind.config.broadcastUserName(userName);

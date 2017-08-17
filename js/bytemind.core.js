@@ -227,9 +227,9 @@ function bytemind_build_page(){
 	//register page section and add button to top-bar (default 'bytemind-top-bar' or 'bytemind-webapp-top-bar')
 	Page.registerSectionWithNavButton = function(uiName, data, alternativeTarget){
 		//add section-tag to view
-		if (data.view){
+		if (data.sectionName && data.view){
 			$(data.view).attr('data-bm-section', data.sectionName);
-		}else if (data.viewId){
+		}else if (data.sectionName && data.viewId){
 			$('#' + data.viewId).attr('data-bm-section', data.sectionName);
 		}
 		//add callback
@@ -255,6 +255,30 @@ function bytemind_build_page(){
 		}
 		//register action
 		Page.registerAction(data.sectionName, data);
+	}
+	
+	//register a button that appears in the default menu (or chosen target)
+	Page.registerMenuButton = function(uiName, data, alternativeTarget){
+		//build button
+		var btn = document.createElement('a');		//document.createElement('button');
+		btn.className = 'bytemind-nav-bar-button bytemind-button';
+		btn.innerHTML = uiName;
+		if (data.href){
+			btn.href = data.href;
+		}
+		if (data.onclick){
+			ByteMind.ui.onclick(btn, function(event){
+				if (data.href){
+					event.preventDefault();
+				}
+				data.onclick(event);
+			});
+		}
+		if (alternativeTarget){
+			$(alternativeTarget).append(btn);
+		}else{
+			$('#bytemind-top-bar-dynamic, #bytemind-webapp-top-bar-dynamic, #bytemind-top-bar, #bytemind-webapp-top-bar').first().append(btn);
+		}
 	}
 
 	//switch page section

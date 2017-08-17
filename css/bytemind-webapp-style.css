@@ -38,8 +38,8 @@
 #bytemind-header-content {
 	position: relative;
 	flex: 1 1 auto;
-	background: #2F3035;
-	color: #fff;
+	background: inherit;
+	color: inherit;
 	width: 100%;
 	height: 66px;
 	padding: 16px;
