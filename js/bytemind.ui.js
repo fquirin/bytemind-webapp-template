@@ -263,7 +263,7 @@ function bytemind_build_ui(){
 		//Hammertime!
 		var pressTimer;
 		var delay = 625;
-		var mc = new Hammer.Manager(ele);
+		var mc = new Hammer.Manager($(ele)[0]);
 		mc.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
 		mc.add(new Hammer.Tap());
 		mc.add(new Hammer.Press({ event: 'firstpress', time : 300}));

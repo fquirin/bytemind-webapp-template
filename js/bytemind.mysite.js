@@ -106,7 +106,7 @@ function buildNavigation(){
 	//Add logout button?
 	if (ByteMind.account){
 		ByteMind.page.registerMenuButton("Logout", {
-			href : "/logout.html",
+			//href : "/logout.html",
 			onclick : function() { ByteMind.page.sideMenu.close(); 	ByteMind.account.logoutAction(); }
 		}, sideMenuEle);
 	}
