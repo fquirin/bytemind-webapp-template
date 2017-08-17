@@ -1,8 +1,6 @@
 //---BUILD PAGE---
 
 var HOME = "home";
-var useSideMenu = false;
-var menuButtonsTotalWidth;
 
 $(document).ready(function(){
 	//load plugins
@@ -42,9 +40,8 @@ $(document).ready(function(){
 	});
 	
 	//test
-	ByteMind.webservice.apiURL = "https://api.b07z.net/assist/";
-	ByteMind.account.apiURL = "https://api.b07z.net/assist/";
-	ByteMind.account.pwdHashSalt = "giggaaa1";
+	ByteMind.webservice.apiURL = "https://api.example.com/";
+	ByteMind.account.apiURL = "https://api.example.com/";
 	ByteMind.account.setup();
 });
 
@@ -109,7 +106,9 @@ function buildNavigation(){
 	});
 	*/
 }
-
+/*
+var useSideMenu = false;
+var menuButtonsTotalWidth;
 function refreshNavigation(menuBar, sideMenu){
 	var sideMenuEle = sideMenu.getMenuElement();
 	if (!sideMenuEle){
@@ -156,4 +155,5 @@ function refreshNavigation(menuBar, sideMenu){
 		}
 	}
 }
+*/
 
