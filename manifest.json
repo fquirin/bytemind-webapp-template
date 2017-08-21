@@ -1,0 +1,23 @@
+{
+  "lang": "en",
+  "short_name": "ByMi WebApp",
+  "name": "ByteMind WebApp template",
+  "icons": [
+    {
+      "src": "img/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#2F3035",
+  "background_color": "#fff",
+  "dir": "ltr",
+  "serviceworker": {
+    "src": "sw.js",
+    "scope": "/webapp/",
+    "use_cache": true
+  }
+}

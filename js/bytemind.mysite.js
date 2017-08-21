@@ -3,6 +3,29 @@
 var HOME = "home";
 
 $(document).ready(function(){
+	//-- Chrome/Android (and whoever will support it) --
+	
+	//handle Chrome progressive app popup for home-screen installation
+	window.addEventListener('beforeinstallprompt', function(e) {
+		//e.preventDefault(); 		//use this to prevent pop-up
+		return false;
+	});
+	
+	//handle service worker to make page offline available
+	if ('serviceWorker' in navigator) {
+		window.addEventListener('load', function() {
+			navigator.serviceWorker.register('sw.js').then(function(registration) {
+				// Registration was successful
+				console.log('ServiceWorker registration successful with scope: ', registration.scope);
+			}, function(err) {
+				// registration failed :(
+				console.log('ServiceWorker registration failed: ', err);
+			});
+		});
+	}
+	
+	//-- ByteMind --
+	
 	//load plugins
     ByteMind.buildPlugins();
 	
@@ -43,6 +66,10 @@ $(document).ready(function(){
 	ByteMind.webservice.apiURL = "https://api.example.com/";
 	ByteMind.account.apiURL = "https://api.example.com/";
 	ByteMind.account.setup();
+	
+	//-- Your stuff --
+	//...
+	
 });
 
 function buildNavigation(){
