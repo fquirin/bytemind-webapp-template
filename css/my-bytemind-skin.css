@@ -34,7 +34,7 @@
 	background: #ceff1a;
 	color: #2F3035;
 }
-#bytemind-popup-message button:hover {
+.bytemind-notouch-device #bytemind-popup-message button:hover {
 	background-color: #fff;
 	color: #2F3035;
 }
@@ -49,7 +49,7 @@
 	background-color: #ceff1a;
 	color: #2F3035;
 }
-#bytemind-login-box button:hover {
+.bytemind-notouch-device #bytemind-login-box button:hover {
 	background-color: #fff;
 	color: #2F3035;
 }

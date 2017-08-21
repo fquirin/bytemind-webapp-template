@@ -20,6 +20,9 @@ function bytemind_build_ui(){
 		if ("ontouchstart" in document.documentElement){
 			UI.isTouchDevice = true;
 			document.documentElement.className += " bytemind-touch-device";
+		}else{
+			UI.isTouchDevice = false;
+			document.documentElement.className += " bytemind-notouch-device";
 		}
 		//is Android or Chrome?
 		UI.isAndroid = (UI.isCordova)? (device.platform === "Android") : (navigator.userAgent.match(/(Android)/ig)? true : false);
@@ -238,7 +241,7 @@ function bytemind_build_ui(){
 		UI.hideBackgroundCoverLayer(parent);
 	}
 	
-	//Simple tab with reduced delay for e.g. iOS' UIWebView
+	//Simple tap with reduced delay for e.g. iOS' UIWebView
 	UI.useFastTouch = true;
 	UI.onclick = function(ele, callback){
 		if (UI.useFastTouch){

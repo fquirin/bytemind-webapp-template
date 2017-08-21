@@ -100,11 +100,8 @@
 #bytemind-webapp-top-bar .bytemind-nav-bar-button:last-child {
 	padding: 0 0 0 16px;
 }
-#bytemind-webapp-top-bar .bytemind-nav-bar-button:hover {
+.bytemind-notouch-device #bytemind-webapp-top-bar .bytemind-nav-bar-button:hover {
 	opacity: 0.5;
-}
-.bytemind-touch-device #bytemind-webapp-top-bar .bytemind-nav-bar-button:hover {
-	opacity: 1.0;
 }
 .bytemind-touch-device #bytemind-webapp-top-bar .bytemind-nav-bar-button:active {
 	opacity: 1.0;
