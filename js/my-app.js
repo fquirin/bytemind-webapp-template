@@ -110,14 +110,16 @@ function buildNavigation(){
 		headerTitle : "Settings",
 		description : "This is the settings page.",
 		onPageLoad : function(){
-			/*
-			var content = document.getElementById('p2-dynamic-content');
+			var content = document.getElementById('settings-page-content');
 			if (content.innerHTML === ''){
-				$(content).load("../other.html #content", function(){
-					//done
-				});
+				if (location.hostname === ""){
+					content.innerHTML = '<p>-- cannot dynamically load from file:// due to cross-domain restrictions. Please use webserver or localhost! --</p>';
+				}else{
+					$(content).load("settings.html #page-content", function(){
+						//done
+					});
+				}
 			}
-			*/
 		}
 	}, sideMenuEle);
 	
@@ -132,7 +134,7 @@ function buildNavigation(){
 	
 	//Add logout button?
 	if (ByteMind.account){
-		ByteMind.page.registerMenuButton("Logout", {
+		ByteMind.page.registerMenuButton("Sign out", {
 			//href : "/logout.html",
 			onclick : function() { ByteMind.page.sideMenu.close(); 	ByteMind.account.logoutAction(); }
 		}, sideMenuEle);

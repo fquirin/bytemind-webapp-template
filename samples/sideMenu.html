@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<!-- web app settings -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+	<title>ByteMind Sample</title>
+	<!-- imports -->
+	<link rel="stylesheet" href="css-latest/bytemind-webapp-style.css" title='main'>
+	<link rel="stylesheet" href="css-latest/bytemind-lib.css" title='main'>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+	<!-- JS -->
+	<script src="js-latest/bytemind.core.js"></script>
+	<script src="js-latest/bytemind.ui.js"></script>
+	<script src="js-latest/bytemind.ui.carousel.js"></script>
+	<script src="js-latest/bytemind.ui.sidemenu.js"></script>
+	<script src="js-latest/bytemind.ui.itemlist.js"></script>
+	<style>
+	* {
+		box-sizing: border-box;
+		font-family: 'Roboto', sans-serif;
+		-webkit-text-size-adjust: 100%;
+	}
+	html {
+		background: #c8c8c8;
+		height: 100%;
+	}
+	body {
+		margin: 0;
+		padding: 0px;
+		height: 100%;
+	}
+	</style>
+</head>
+<body>
+	<div id="bytemind-webapp-window">
+		<!-- Header -->
+		<div id="bytemind-webapp-header"><div id="bytemind-header-content"><div class="bytemind-page-title">
+			ByteMind widget sample
+		</div></div><div id="bytemind-header-accent"></div></div>
+		<!-- Top menu -->
+		<div id="bytemind-webapp-top-bar">
+			<div id="bytemind-menu-btn-ctrl" class="bytemind-nav-bar-button bytemind-button">Menu</div>
+		</div>
+		<!-- Side menu -->
+		<div id="my-bytemind-side-menu-interlayer" class="bytemind-side-menu-interlayer"></div>
+		<div id="my-bytemind-side-menu" class="bytemind-side-menu">
+			<div id="my-bytemind-menu-close" class="bytemind-side-menu-close-btn bytemind-button">X</div>
+			<!-- entries -->
+			<h3>My Menu</h3>
+			<a class="bytemind-nav-bar-button bytemind-button active" href="">page 1</a>
+			<a class="bytemind-nav-bar-button bytemind-button" href="http://example.com">example.com</a>
+			<a class="bytemind-nav-bar-button bytemind-button" href="http://bytemind.de">bytemind.de</a>
+		</div>
+		<div id="my-bytemind-side-menu-swipe" class="bytemind-swipe-area-left"></div>
+		<!-- Main -->
+		<div id="bytemind-webapp-main">
+			<!-- page sections -->
+			<div id="bytemind-main-views">
+				<!-- page 1 -->
+				<div id="page1" class="bytemind-view">
+					<h3>Side menu</h3>
+					<br>
+					<p>This sample shows a 'raw' side menu.</p>
+					<p>Tap or swipe from the left edge to open.</p>
+					<p>Tap 'X', anywhere outside the menu or swipe to close.</p>
+					<br>
+					<p><u>Note:</u> to use the menu for page navigation you would usually combine it with the ByteMind page navigation tool (part of core).</p>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<div id="bytemind-webapp-footer">
+		</div>
+	</div>
+</body>
+<script>
+$(document).ready(function(){
+	//load plugins
+    ByteMind.buildPlugins();
+	
+	//setup UI (get info about browser, touch, etc. required to setup ByteMind stuff)
+	ByteMind.ui.setup();
+	
+	//Side menu
+	var sideMenuEle = document.getElementById('my-bytemind-side-menu');
+	var swipeArea = ByteMind.ui.makeAutoResizeSwipeArea(document.getElementById('my-bytemind-side-menu-swipe'), function(){
+		//console.log('tap');
+	});
+	var sideMenuOptions = {
+		isRightBound : 		false,						//default menu is on the left side
+		swipeAreas : 		[sideMenuEle, swipeArea],	//areas that can be used to swipe open and close the menu
+		onOpenCallback : 	function(){},
+		onCloseCallback : 	function(){},
+		interlayer : 		document.getElementById('my-bytemind-side-menu-interlayer'),
+		menuButton : 		document.getElementById('bytemind-menu-btn-ctrl'),
+		menuButtonClose : 	document.getElementById('my-bytemind-menu-close')
+	};
+	ByteMind.page.sideMenu = new ByteMind.ui.SideMenu(sideMenuEle, sideMenuOptions);
+	ByteMind.page.sideMenu.init();
+});
+</script>
+</html>

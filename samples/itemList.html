@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<!-- web app settings -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+	<title>ByteMind Sample</title>
+	<!-- imports -->
+	<link rel="stylesheet" href="css-latest/bytemind-webapp-style.css" title='main'>
+	<link rel="stylesheet" href="css-latest/bytemind-lib.css" title='main'>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+	<!-- JS -->
+	<script src="js-latest/bytemind.core.js"></script>
+	<script src="js-latest/bytemind.ui.js"></script>
+	<script src="js-latest/bytemind.ui.carousel.js"></script>
+	<script src="js-latest/bytemind.ui.sidemenu.js"></script>
+	<script src="js-latest/bytemind.ui.itemlist.js"></script>
+	<style>
+	* {
+		box-sizing: border-box;
+		font-family: 'Roboto', sans-serif;
+		-webkit-text-size-adjust: 100%;
+	}
+	html {
+		background: #c8c8c8;
+		height: 100%;
+	}
+	body {
+		margin: 0;
+		padding: 0px;
+		height: 100%;
+	}
+	
+	/* ------ Cards ------ */
+	
+	.bytemind-cards-flexSize-container {
+		background: rgba(0, 0, 0, 0.10);
+		position: relative;
+		margin: 5px 0px;
+		border-radius: 3px;
+		transition: min-height 0.3s;
+		padding: 5px;
+		overflow: hidden;
+	}
+
+	.bytemind-cards-header {
+		position: relative;
+		background: rgba(235, 235, 255, 0.95);
+		border-radius: 3px;
+		margin: 0px;
+		padding: 0px;
+		width: 100%;
+		min-height: 38px;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.bytemind-cards-header-title {
+		flex: 1 1 auto;
+		min-height: 38px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.bytemind-cards-header-menu {
+		flex: 1 0 100%;
+		background: rgba(47, 48, 53, 1.0);
+		color: #fff;
+		width: 100%;
+		min-height: 38px;
+		overflow: hidden;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		position: relative;
+	}
+	.bytemind-cards-header-menu-item {
+		width: 32px;
+		height: 32px;
+		background: #fff;
+		margin: 0 4px;
+	}
+	
+	.bytemind-cards-body {
+		position: relative;
+		background: transparent;
+		margin: 0px;
+		padding: 0px;
+		width: 100%;
+	}
+	
+	.bytemind-cards-item {
+		position: relative;
+		background: rgba(255, 255, 255, 1.0);
+		margin: 4px 0px;
+		padding: 0px;
+		width: 100%;
+		min-height: 38px;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+	}
+	.bytemind-cards-item:last-child {
+		margin: 4px 0px 0 0;
+	}
+	.bytemind-cards-item-menu {
+		flex: 1 0 100%;
+		background: rgba(47, 48, 53, 1.0);
+		color: #fff;
+		width: 100%;
+		min-height: 38px;
+		overflow: hidden;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		position: relative;
+	}
+	.bytemind-cards-item-center {
+		flex: 1 1 auto;
+		min-height: 38px;
+		max-width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.bytemind-cards-item-menu-item {
+		width: 32px;
+		height: 32px;
+		background: #fff;
+		margin: 0 4px;
+	}
+	
+	</style>
+</head>
+<body>
+	<div id="bytemind-webapp-window">
+		<!-- Header -->
+		<div id="bytemind-webapp-header"><div id="bytemind-header-content"><div class="bytemind-page-title">
+			ByteMind widget sample
+		</div></div><div id="bytemind-header-accent"></div></div>
+		<!-- Main -->
+		<div id="bytemind-webapp-main">
+			<!-- page sections -->
+			<div id="bytemind-main-views">
+				<!-- page 1 -->
+				<div id="page1" class="bytemind-view">
+					<h3>Item list</h3>
+					<br>
+					<p>This sample shows an item list.</p>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<div id="bytemind-webapp-footer">
+		</div>
+	</div>
+</body>
+<script>
+$(document).ready(function(){
+	//load plugins
+    ByteMind.buildPlugins();
+	
+	//setup UI (get info about browser, touch, etc. required to setup ByteMind stuff)
+	ByteMind.ui.setup();
+	
+	//Item list
+	var options = {
+		id : "my-list-1",
+		hasHeader : true,
+		header : {
+			name : "Test List",
+			background : "#5683c4",
+			textColor : "#fff",
+			cssClass : "",
+			menu : [{
+				action : "editName"
+			},{
+				materialIcon : "",
+				fun : function(list){}
+			},{
+				action : "share"
+			}]
+		},
+		itemType : "plain",
+		itemMenu : [{
+			action : "editName"
+		},{
+			action : "delete"
+		}]
+	}
+	var data = {
+		items : [{
+			title : "Item A"
+		},{
+			title : "Item B"
+		}]
+	}
+	var itemList = new ByteMind.ui.ItemList(data, options);
+	
+	//add list to page
+	$('#page1').append(itemList.getElement());
+});
+</script>
+</html>

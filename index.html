@@ -16,55 +16,12 @@
 	<link rel="apple-touch-icon" href="img/icon.png">
 	<meta property="og:image" content="img/icon.png"/>
 	<!-- imports -->
+	<link rel="stylesheet" href="css/my-page-style.css" title='main'>
 	<link rel="stylesheet" href="css/bytemind-webapp-style.css" title='main'>
-	<!-- for low prio stylesheets and JS see end-of-body -->
+	<!-- MY SKIN (put here or at end of body) -->
+	<!-- <link rel="stylesheet alternate" href="css/my-bytemind-skin.css" class='bytemind-style-skin' title='main' data-name='MySkin'> -->
 	</script>
 	<style>
-		/* ---- Page global ---- */
-		
-		::-webkit-scrollbar {
-			width: 5px;
-			height: 5px;
-			background: rgba(0,0,0,0.05);
-		}
-		::-webkit-scrollbar-thumb {
-			border-radius: 5px;
-			background: rgba(0,0,0,0.10);
-		}
-		* {
-			box-sizing: border-box;
-			font-family: 'Roboto', sans-serif;
-			-webkit-text-size-adjust: 100%;
-		}
-		html {
-			background: #c8c8c8;
-			height: 100%;
-		}
-		body {
-			margin: 0;
-			padding: 0px;
-			height: 100%;
-		}
-		/*.bytemind-standalone-app body {
-			padding: 0px;
-		}*/
-		input:focus,
-		select:focus,
-		textarea:focus,
-		button:focus {
-			outline: none;
-		}
-		::-moz-focus-inner {
-			border:0;
-		}
-		button {
-			-webkit-user-select: none;
-			-webkit-touch-callout: none;
-			-moz-user-select: none;    
-			-ms-user-select: none;      
-			user-select: none;
-			touch-action: manipulation;
-		}
 	</style>
 </head>
 <body>
@@ -103,9 +60,8 @@
 				</div>
 				<!-- page 2 -->
 				<div id="page2" class="bytemind-view">
-					<p>Settings</p>
-					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-					<div id="p2-dynamic-content"></div>
+					<!-- loaded via ajax call -->
+					<div id="settings-page-content"></div>
 				</div>
 				<!-- page 3 -->
 				<div id="page3" class="bytemind-view">
@@ -131,8 +87,6 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,600" rel="stylesheet">
 <link rel="stylesheet" href="css-static/bytemind-lib-1.0.3.css" title='main'>
-<!-- MY SKIN -->
-<!-- <link rel="stylesheet alternate" href="css/my-bytemind-skin.css" class='bytemind-style-skin' title='main' data-name='MySkin'> -->
 <!-- JS -->
 <script src="js-static/jquery-3.1.1.min.js"></script>
 <script src="js-static/hammer.min.js"></script>
@@ -144,6 +98,6 @@
 <script src="js/bytemind.account.js"></script>
 <script src="js-static/bytemind.ui.carousel-1.0.1.js"></script>
 <script src="js-static/bytemind.ui.sidemenu-1.0.2.js"></script>
-<script src="js/bytemind.mysite.js"></script>
+<script src="js/my-app.js"></script>
 </body>
 </html>

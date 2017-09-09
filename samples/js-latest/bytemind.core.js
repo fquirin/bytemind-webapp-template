@@ -15,6 +15,7 @@ ByteMind.buildPlugins = function(){
 	if (typeof bytemind_build_account === "function"){ 		ByteMind.account = bytemind_build_account();			ByteMind.debug.info("Loading plugin: ByteMind.account"); }
 	if (typeof bytemind_build_ui_carousel === "function"){ 	ByteMind.ui.Carousel = bytemind_build_ui_carousel(); 	ByteMind.debug.info("Loading plugin: ByteMind.carousel"); }
 	if (typeof bytemind_build_ui_sidemenu === "function"){ 	ByteMind.ui.SideMenu = bytemind_build_ui_sidemenu(); 	ByteMind.debug.info("Loading plugin: ByteMind.sidemenu"); }
+	if (typeof bytemind_build_ui_itemlist === "function"){ 	ByteMind.ui.ItemList = bytemind_build_ui_itemlist(); 	ByteMind.debug.info("Loading plugin: ByteMind.itemlist"); }
 }
 
 //CONFIG
@@ -282,7 +283,6 @@ function bytemind_build_page(){
 	}
 
 	//switch page section
-	var setHistoryTimer;
 	Page.switchSection = function(data, options){
 		if (activeSection === data.sectionName){
 			return;
@@ -314,35 +314,30 @@ function bytemind_build_page(){
 			$('meta[name=description]').remove();
 			$('head').append( '<meta name="description" content="' + data.description + '">' );
 		}
+		//set history
+		var urlParams = '';
+		if (window.location.href.indexOf('?') >= 0){
+			urlParams = window.location.href.replace(/.*(\?.*?)(#!|$).*/,"$1").trim();
+			urlParams = urlParams.replace(/\?_escaped_fragment_=.*?(\?|&|#!|$)/,'').trim();
+		}
+		var newHref = (window.location.href.replace(/(\?.*?#!.*|#!.*|\?.*)/,"").trim()  + SECTION_PREFIX + data.sectionName + urlParams).trim();
+		if (!replaceHistory){
+			if (newHref !== window.location.href){
+				history.pushState({sectionName : data.sectionName}, "", newHref);
+			}
+		}else{
+			history.replaceState({sectionName : data.sectionName}, "", newHref);
+		}
+		activeSection = data.sectionName;
+		
 		//refresh menues
 		if (Page.sideMenu){
 			Page.sideMenu.refresh();
 			Page.sideMenu.close();
 		}
 		
-		//set history - TODO: this one is tricky in combination with iOS swipe-to-go-back safari-feature
-		clearTimeout(setHistoryTimer);
-		setHistoryTimer = setTimeout(function(){
-			
-			var urlParams = '';
-			if (window.location.href.indexOf('?') >= 0){
-				urlParams = window.location.href.replace(/.*(\?.*?)(#!|$).*/,"$1").trim();
-				urlParams = urlParams.replace(/\?_escaped_fragment_=.*?(\?|&|#!|$)/,'').trim();
-			}
-			var newHref = (window.location.href.replace(/(\?.*?#!.*|#!.*|\?.*)/,"").trim()  + SECTION_PREFIX + data.sectionName + urlParams).trim();
-			if (!replaceHistory){
-				if (newHref !== window.location.href){
-					history.pushState({sectionName : data.sectionName}, "", newHref);
-				}
-			}else{
-				history.replaceState({sectionName : data.sectionName}, "", newHref);
-			}
-			activeSection = data.sectionName;
-			
-			//onPageLoad
-			if (data.onPageLoad) data.onPageLoad();
-		
-		}, 0);
+		//onPageLoad
+		if (data.onPageLoad) data.onPageLoad();
 	}
 	
 	return Page;
