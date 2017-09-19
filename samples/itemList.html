@@ -39,9 +39,16 @@
 		position: relative;
 		margin: 5px 0px;
 		border-radius: 3px;
-		transition: min-height 0.3s;
 		padding: 5px;
 		overflow: hidden;
+		/*transition: min-height 0.3s, max-height 0.3s, height 0.3s;*/
+	}
+	
+	.bytemind-minimize-y {
+		height: 0 !important;
+		min-height: 0 !important;
+		max-height: 0 !important;
+		overflow: hidden !important;
 	}
 
 	.bytemind-cards-header {
@@ -64,23 +71,27 @@
 		align-items: center;
 		justify-content: center;
 	}
+	.bytemind-cards-header-title p {
+		margin: 4px;
+	}
 	.bytemind-cards-header-menu {
 		flex: 1 0 100%;
 		background: rgba(47, 48, 53, 1.0);
 		color: #fff;
 		width: 100%;
-		min-height: 38px;
+		/*min-height: 38px;*/
 		overflow: hidden;
 		display: flex;
 		align-items: center;
 		justify-content: space-around;
 		position: relative;
+		/*transition: min-height 0.3s, max-height 0.3s, height 0.3s;*/
 	}
 	.bytemind-cards-header-menu-item {
 		width: 32px;
 		height: 32px;
 		background: #fff;
-		margin: 0 4px;
+		margin: 4px;
 	}
 	
 	.bytemind-cards-body {
@@ -111,12 +122,13 @@
 		background: rgba(47, 48, 53, 1.0);
 		color: #fff;
 		width: 100%;
-		min-height: 38px;
+		/*min-height: 38px;*/
 		overflow: hidden;
 		display: flex;
 		align-items: center;
 		justify-content: space-around;
 		position: relative;
+		/*transition: min-height 0.3s, max-height 0.3s, height 0.3s;*/
 	}
 	.bytemind-cards-item-center {
 		flex: 1 1 auto;
@@ -126,11 +138,14 @@
 		align-items: center;
 		justify-content: center;
 	}
+	.bytemind-cards-item-center p {
+		margin: 4px;
+	}
 	.bytemind-cards-item-menu-item {
 		width: 32px;
 		height: 32px;
 		background: #fff;
-		margin: 0 4px;
+		margin: 4px;
 	}
 	
 	</style>

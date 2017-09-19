@@ -77,6 +77,11 @@ function bytemind_build_ui_itemlist(){
 		var menu = makeHeaderMenu(header.menu);
 		if (menu){
 			listHeader.appendChild(menu);
+			//add button
+			$(listHeader).on('click', function(){
+				//$(menu).toggleClass('bytemind-minimize-y');
+				$(menu).slideToggle(300);
+			});
 		}
 		return listHeader;
 	}
@@ -84,7 +89,7 @@ function bytemind_build_ui_itemlist(){
 	function makeHeaderTitle(header){
 		var title = document.createElement('div');
 		title.className = 'bytemind-cards-header-title';
-		title.innerHTML = header.name;
+		title.innerHTML = '<p>' + header.name + '</p>';
 		return title;
 	}
 	//make header menu
@@ -122,7 +127,7 @@ function bytemind_build_ui_itemlist(){
 	function makeItem(itemData, options){
 		var lItem = document.createElement('div');
 		lItem.className = 'bytemind-cards-item';
-		lItem.innerHTML = "<div class='bytemind-cards-item-center'>" + itemData.title + "</div>";
+		lItem.innerHTML = "<div class='bytemind-cards-item-center'><p>" + itemData.title + "</p></div>";
 		
 		//menu??
 		if (options.itemMenu && options.itemMenu.length > 0){
@@ -134,6 +139,12 @@ function bytemind_build_ui_itemlist(){
 				itemMenu.appendChild(menuItem);
 			}
 			lItem.appendChild(itemMenu);
+			
+			//add button
+			$(lItem).on('click', function(){
+				//$(itemMenu).toggleClass('bytemind-minimize-y');
+				$(itemMenu).slideToggle(300);
+			});
 		}
 		return lItem;
 	}
@@ -143,7 +154,10 @@ function bytemind_build_ui_itemlist(){
 		menuItem.className = 'bytemind-cards-item-menu-item';
 		
 		//TODO: evaluate menuData
-		
+		$(menuItem).on('click', function(){
+			//some fun
+		});
+
 		return menuItem;
 	}
 	
