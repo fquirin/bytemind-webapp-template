@@ -8,6 +8,7 @@
 	<!-- imports -->
 	<link rel="stylesheet" href="css-latest/bytemind-webapp-style.css" title='main'>
 	<link rel="stylesheet" href="css-latest/bytemind-lib.css" title='main'>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
 	<!-- JS -->
@@ -32,14 +33,25 @@
 		height: 100%;
 	}
 	
+	/* ------ Material Icons ------ */
+	
+	.material-icons.bm-menu-small {
+		vertical-align: middle;
+		font-size: 24px;
+		-webkit-user-select: none;  
+		-moz-user-select: none;    
+		-ms-user-select: none;      
+		user-select: none;
+	}
+	
 	/* ------ Cards ------ */
 	
 	.bytemind-cards-flexSize-container {
 		background: rgba(0, 0, 0, 0.10);
 		position: relative;
-		margin: 5px 0px;
-		border-radius: 3px;
-		padding: 5px;
+		margin: 4px 0px;
+		border-radius: 0px;
+		padding: 4px;
 		overflow: hidden;
 		/*transition: min-height 0.3s, max-height 0.3s, height 0.3s;*/
 	}
@@ -54,8 +66,8 @@
 	.bytemind-cards-header {
 		position: relative;
 		background: rgba(235, 235, 255, 0.95);
-		border-radius: 3px;
-		margin: 0px;
+		border-radius: 0px;
+		margin: 0 0 4px 0;
 		padding: 0px;
 		width: 100%;
 		min-height: 38px;
@@ -64,12 +76,16 @@
 		align-items: center;
 		justify-content: space-between;
 	}
+	.bytemind-cards-header:last-child {
+		margin: 0;
+	}
 	.bytemind-cards-header-title {
 		flex: 1 1 auto;
 		min-height: 38px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		cursor: pointer;
 	}
 	.bytemind-cards-header-title p {
 		margin: 4px;
@@ -79,19 +95,22 @@
 		background: rgba(47, 48, 53, 1.0);
 		color: #fff;
 		width: 100%;
-		/*min-height: 38px;*/
+		/*min-height: 32px;*/
 		overflow: hidden;
 		display: flex;
 		align-items: center;
 		justify-content: space-around;
+		flex-wrap: wrap;
 		position: relative;
 		/*transition: min-height 0.3s, max-height 0.3s, height 0.3s;*/
 	}
 	.bytemind-cards-header-menu-item {
-		width: 32px;
-		height: 32px;
-		background: #fff;
+		min-width: 40px;
+		/*height: 32px;*/
+		background: transparent;
 		margin: 4px;
+		text-align: center;
+		cursor: pointer;
 	}
 	
 	.bytemind-cards-body {
@@ -102,50 +121,81 @@
 		width: 100%;
 	}
 	
-	.bytemind-cards-item {
+	.bytemind-cards-footer {
 		position: relative;
-		background: rgba(255, 255, 255, 1.0);
-		margin: 4px 0px;
+		background: #c8c8c8;
+		color: #fff;
+		min-height: 16px;
+		margin: 4px 0 0 0;
 		padding: 0px;
 		width: 100%;
-		min-height: 38px;
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
 		justify-content: center;
 	}
-	.bytemind-cards-item:last-child {
+	
+	.bytemind-cards-item {
+		position: relative;
 		margin: 4px 0px 0 0;
+		padding: 0px;
+		width: 100%;
+		/*min-height: 32px;*/
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+	}
+	.bytemind-cards-item:first-child {
+		margin: 0;
 	}
 	.bytemind-cards-item-menu {
 		flex: 1 0 100%;
 		background: rgba(47, 48, 53, 1.0);
 		color: #fff;
 		width: 100%;
-		/*min-height: 38px;*/
+		/*min-height: 32px;*/
 		overflow: hidden;
 		display: flex;
 		align-items: center;
 		justify-content: space-around;
+		flex-wrap: wrap;
 		position: relative;
 		/*transition: min-height 0.3s, max-height 0.3s, height 0.3s;*/
 	}
 	.bytemind-cards-item-center {
 		flex: 1 1 auto;
-		min-height: 38px;
+		background: rgba(255, 255, 255, 1.0);
+		min-height: 32px;
 		max-width: 100%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		cursor: pointer;
 	}
 	.bytemind-cards-item-center p {
 		margin: 4px;
 	}
+	.bytemind-cards-item-left, 
+	.bytemind-cards-item-right {
+		background: rgba(255, 255, 255, 1.0);
+	    width: 46px;
+    	flex: 0 0 auto;
+		align-self: stretch;
+	}
+	.bytemind-cards-item-left {
+		margin-right: 2px;
+	}
+	.bytemind-cards-item-right {
+		margin-left: 2px;
+	}
 	.bytemind-cards-item-menu-item {
-		width: 32px;
-		height: 32px;
-		background: #fff;
+		min-width: 40px;
+		/*height: 32px;*/
+		background: transparent;
 		margin: 4px;
+		text-align: center;
+		cursor: pointer;
 	}
 	
 	</style>
@@ -162,9 +212,14 @@
 			<div id="bytemind-main-views">
 				<!-- page 1 -->
 				<div id="page1" class="bytemind-view">
-					<h3>Item list</h3>
-					<br>
-					<p>This sample shows an item list.</p>
+					<div id="list-block1">
+						<h3>Item list 1</h3>
+						<p>This sample shows an item list.</p>
+					</div>
+					<div id="list-block2">
+						<h3>Item list 2</h3>
+						<p>This sample shows another item list.</p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -191,32 +246,86 @@ $(document).ready(function(){
 			textColor : "#fff",
 			cssClass : "",
 			menu : [{
-				action : "editName"
-			},{
-				materialIcon : "",
+				materialIcon : "cloud_upload",
 				fun : function(list){}
 			},{
-				action : "share"
+				action : "editName"
+			},{
+				action : "shareList"
+			},{
+				action : "addItem"
+			},{
+				action : "deleteList"
+			},{
+				materialIcon : "person_pin",
+				fun : function(listData, listElement){}
 			}]
 		},
-		itemType : "plain",
+		itemType : "3fold",
+		itemActions : {
+			leftOnBuild : function(itemData, that){
+				if (itemData.isChecked){
+					that.style.backgroundColor = '#40ff60';
+				}
+			},
+			leftOnClick : function(itemData, that){
+				if (itemData.isChecked){
+					that.style.backgroundColor = '#fff';
+					itemData.isChecked = false;
+				}else{
+					that.style.backgroundColor = '#40ff60';
+					itemData.isChecked = true;
+				}
+			},
+			rightOnBuild : function(itemData, that){},
+			rightOnClick : function(itemData, that){}
+		},
 		itemMenu : [{
-			action : "editName"
+			action : "editItem"
 		},{
-			action : "delete"
-		}]
+			materialIcon : "open_in_browser",
+			fun : function(itemData, itemElement){}
+		},{
+			action : "deleteItem"
+		}],
+		autoSize : true,
+		autoSizeN : 2
 	}
 	var data = {
 		items : [{
-			title : "Item A"
+			title : "Item A",
+			isChecked : true
 		},{
 			title : "Item B"
+		},{
+			title : "Item C"
+		},{
+			title : "Item D"
+		},{
+			title : "Item E"
 		}]
 	}
 	var itemList = new ByteMind.ui.ItemList(data, options);
 	
-	//add list to page
-	$('#page1').append(itemList.getElement());
+	var data2 = {
+		items : [{
+			title : "Item A",
+			isChecked : true
+		},{
+			title : "Item B"
+		},{
+			title : "Item C"
+		},{
+			title : "Item D"
+		},{
+			title : "Item E"
+		}]
+	}
+	var itemList2 = new ByteMind.ui.ItemList(data2);
+	
+	//add lists to page
+	$('#list-block1').append(itemList.getElement());
+	$('#list-block2').append(itemList2.getElement());
 });
 </script>
 </html>
