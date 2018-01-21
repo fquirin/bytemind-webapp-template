@@ -38,6 +38,9 @@ function bytemind_build_ui(){
 		UI.isEdge = (/Edge/gi.test(navigator.userAgent));
 		//is mobile?
 		UI.isMobile = !UI.isEdge && !UI.isChromeDesktop && (UI.isAndroid || UI.isIOS);
+		if (UI.isMobile){
+			document.documentElement.className += " bytemind-mobile-device";
+		}
 		//is standalone app?
 		UI.isStandaloneWebApp = isStandaloneWebApp();
 		function isStandaloneWebApp(){
@@ -241,8 +244,8 @@ function bytemind_build_ui(){
 		UI.hideBackgroundCoverLayer(parent);
 	}
 	
-	//Simple tap with reduced delay for e.g. iOS' UIWebView
-	UI.useFastTouch = true;
+	//Simple tap with reduced delay for e.g. iOS' UIWebView - note: try using WKWebView whenever u can, this fast-click has some issues e.g. with "editable" divs
+	UI.useFastTouch = false;
 	UI.onclick = function(ele, callback){
 		if (UI.useFastTouch){
 			UI.longPressShortPressDoubleTap(ele, '', '', callback);

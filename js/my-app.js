@@ -82,7 +82,7 @@ function buildNavigation(){
 		//console.log('tap');
 	});
 	var sideMenuOptions = {
-		isRightBound : false,					//default menu is on the left side
+		isRightBound : false,					//default menu is on the left side, if you change it make sure to use a right-bound swipeArea as well!
 		swipeAreas : [sideMenuEle, swipeArea],	//areas that can be used to swipe open and close the menu
 		onOpenCallback : function(){},
 		onCloseCallback : function(){},
