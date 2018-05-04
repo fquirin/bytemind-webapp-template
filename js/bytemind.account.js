@@ -375,7 +375,7 @@ function bytemind_build_account(){
 			timeout: 5000,
 			type: "post",
 			data: parameters,
-			dataType: "jsonp",
+			dataType: "jsonp", 				//TODO: we got to remove this for every POST call, actually this is CALLED AS GET somehow!
 			success: function(data) {
 				ByteMind.ui.hideLoader();
 				if (debugCallback) debugCallback(data);
