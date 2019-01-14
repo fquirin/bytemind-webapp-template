@@ -32,7 +32,7 @@ function bytemind_build_webservice(){
 	Webservice.checkNetwork = function(successCallback, failCallback){
 		ByteMind.ui.showLoader(true);
 		$.ajax({
-			url: ("https://google.com"),
+			url: ("https://github.com"),
 			timeout: 1500,
 			method: "HEAD",
 			success: function(data) {

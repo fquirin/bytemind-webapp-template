@@ -1,7 +1,5 @@
 //---BUILD PAGE---
 
-var HOME = "home";
-
 $(document).ready(function(){
 	//-- Chrome/Android (and whoever will support it) --
 	
@@ -67,9 +65,8 @@ $(document).ready(function(){
 	ByteMind.account.apiURL = "https://api.example.com/";
 	ByteMind.account.setup();
 	
-	//-- Your stuff --
-	//...
-	
+	//From index.js (your stuff)
+	onStart();	
 });
 
 function buildNavigation(){
@@ -93,44 +90,10 @@ function buildNavigation(){
 	ByteMind.page.sideMenu = new ByteMind.ui.SideMenu(sideMenuEle, sideMenuOptions);
 	ByteMind.page.sideMenu.init();
 	
-	//Home
-	ByteMind.page.registerSectionWithNavButton("Home", {
-		sectionName : HOME,
-		viewId : "page1", 		//use this if you have an ID else use 'view' and give the element
-		title : "ByteMind Home",
-		headerTitle : "Home",
-		description : "This is the landing page."
-	}, sideMenuEle);
+	//Pages:
 	
-	//Settings
-	ByteMind.page.registerSectionWithNavButton("Settings", {
-		sectionName : "settings",
-		viewId : "page2",
-		title : "ByteMind Settings",
-		headerTitle : "Settings",
-		description : "This is the settings page.",
-		onPageLoad : function(){
-			var content = document.getElementById('settings-page-content');
-			if (content.innerHTML === ''){
-				if (location.hostname === ""){
-					content.innerHTML = '<p>-- cannot dynamically load from file:// due to cross-domain restrictions. Please use webserver or localhost! --</p>';
-				}else{
-					$(content).load("settings.html #page-content", function(){
-						//done
-					});
-				}
-			}
-		}
-	}, sideMenuEle);
-	
-	//Imprint
-	ByteMind.page.registerSectionWithNavButton("Imprint", {
-		sectionName : "imprint",
-		viewId : "page3",
-		title : "ByteMind Imprint",
-		headerTitle : "Imprint",
-		description : "This is the imprint page.",
-	}, sideMenuEle);
+	//From index.js
+	buildPages(sideMenuEle);
 	
 	//Add logout button?
 	if (ByteMind.account){
@@ -202,4 +165,3 @@ function refreshNavigation(menuBar, sideMenu){
 	}
 }
 */
-
