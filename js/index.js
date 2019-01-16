@@ -81,7 +81,7 @@ function setupAccountClass(){
 			action: "validate",
 			//GUUID: userId,	//<-- DONT USE THAT IF ITS NOT ABSOLUTELY NECESSARY (USE 'KEY') ...
 			//PWD: pwd,			//... it sends clear text password (and is a much heavier load for the server!)
-			KEY: (userid + ";" + pwd),
+			KEY: (userId + ";" + pwd),
 			client: ByteMind.config.clientInfo
 		}
 		var request = {

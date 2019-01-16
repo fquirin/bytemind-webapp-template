@@ -282,7 +282,7 @@ function bytemind_build_account(){
 			ByteMind.ui.hideLoader();
 			if (debugCallback) debugCallback(data);
 			if (data && data.result){
-				if (!Account.loginSuccessTest()){
+				if (!Account.loginSuccessTest(data)){
 					//TODO: removed for now, add another 'overwritable' here?
 					//if (data.code && data.code == 3){
 					//	if (errorCallback) errorCallback(ByteMind.local.g('loginFailedServer'));
@@ -346,7 +346,7 @@ function bytemind_build_account(){
 		request.success = function(data) {
 			ByteMind.ui.hideLoader();
 			if (debugCallback) debugCallback(data);
-			if (!Account.logoutSuccessTest()){
+			if (!Account.logoutSuccessTest(data)){
 				if (errorCallback) errorCallback('Sorry, but the log-out process failed! Please log-in again to overwrite old token.');
 				return;
 			}
