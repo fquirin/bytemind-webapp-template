@@ -31,6 +31,16 @@ $(document).ready(function(){
 	ByteMind.ui.setup();
 	buildNavigation();
 	
+	//Setup Webservice class
+	if (ByteMind.webservice && setupWebserviceClass){
+		setupWebserviceClass();		//from index.js
+	}
+	
+	//setup Account class
+	if (ByteMind.account && setupAccountClass){
+		setupAccountClass();		//from index.js
+	}
+	
 	//debug
 	var clientInfo = document.createElement('span');
 	clientInfo.innerHTML = ByteMind.config.clientInfo;
@@ -60,13 +70,20 @@ $(document).ready(function(){
 		});
 	});
 	
-	//test
-	ByteMind.webservice.apiURL = "https://api.example.com/";
-	ByteMind.account.apiURL = "https://api.example.com/";
-	ByteMind.account.setup();
+	//From index.js (run before ByteMind.account tries to restore account data)
+	if (ByteMind.account && beforeLoginRestore){
+		beforeLoginRestore();
+	}
+	
+	//Open login box
+	if (ByteMind.account){
+		ByteMind.account.setup();
+	}
 	
 	//From index.js (your stuff)
-	onStart();	
+	if (onStart){
+		onStart();
+	}
 });
 
 function buildNavigation(){
@@ -93,7 +110,9 @@ function buildNavigation(){
 	//Pages:
 	
 	//From index.js
-	buildPages(sideMenuEle);
+	if (buildPages){
+		buildPages(sideMenuEle);
+	}
 	
 	//Add logout button?
 	if (ByteMind.account){
