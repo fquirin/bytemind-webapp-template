@@ -30,6 +30,11 @@ $(document).ready(function(){
 	//setup page
 	ByteMind.ui.setup();
 	buildNavigation();
+
+	//translate page
+	if (ByteMind.local){
+		ByteMind.local.translateAll();
+	}
 	
 	//Setup Webservice class
 	if (ByteMind.webservice && setupWebserviceClass){

@@ -2,9 +2,31 @@
 - some elements like the cover layer and popup use z-index to be on top. If your elements use z-index too you might need to adjust the values here
 */
 
+/* Google material icon sizes: */
+.material-icons.md-txt { font-size: 16px; } 		/* inline text default */
+.material-icons.md-btn { font-size: 21px; } 		/* chat controls button default */
+.material-icons.md-btn2 { font-size: 24px; }		/* menu button default */
+.material-icons.md-mic { font-size: 27px; } 		/* mic button default */
+.material-icons.md-mic-dia { font-size: 20px; } 	/* mic button dialog state */
+.material-icons.md-mnu { font-size: 28px; }
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+.material-icons.md-inherit { font-size: inherit; }
+.material-icons {
+	vertical-align: text-bottom;
+	-webkit-user-select: none;  
+	-moz-user-select: none;    
+	-ms-user-select: none;      
+	user-select: none;
+}
+
 /* --- SHARED ELEMENTS -- */
 
 .bytemind-touch-device {}
+
+.bytemind-notouch-device {}
 
 .bytemind-standalone-app {}
 
@@ -301,7 +323,8 @@
 	border: 0px;
     float: right;
 	width: 100%;
-	margin: 10px 0px 15px 0px;
+	min-height: 33px;
+	margin: 10px 0px 10px 0px;
 	padding: 7px 10px;
 	background-color: #44c8be;
 	color: #2f3035;
@@ -317,4 +340,32 @@
 .bytemind-touch-device #bytemind-login-box button:hover {
 	background-color: #44c8be;
 	color: #2f3035;
+}
+#bytemind-login-form {
+	overflow: hidden;
+	padding-bottom: 4px;
+}
+#bytemind-login-links {
+	display: flex;
+	justify-content: space-around;
+	padding-top: 4px;
+	font-size: 15px;
+	font-weight: 300;
+}
+#bytemind-login-links a {
+	color: inherit;
+	text-decoration: none;
+	opacity: 0.25;
+	transition: opacity 0.5s;
+}
+.bytemind-notouch-device #bytemind-login-links a:hover {
+	opacity: 1.0;
+}
+#bytemind-login-extend-box {
+    width: 100%;
+}
+#bytemind-login-extend-btn {
+	background: transparent !important;
+    color: inherit !important;
+	margin: 4px 0 0 0 !important;
 }

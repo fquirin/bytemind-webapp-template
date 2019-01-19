@@ -6,11 +6,14 @@ function bytemind_build_account(){
 	
 	//Overwrite this e.g. in 'index.js' to customize:
 	Account.apiURL = "http://localhost:8001";
+	Account.setApiURL = function(newURL){
+		Account.apiURL = newURL;
+		broadcastNewAccountURL();
+	}
 	Account.tokenValidTime = 1000*60*60*24; 	//refresh required after e.g. 1 day
 
 	Account.data; 		//cache for account data from 'Account.storeData'
 	var language = ByteMind.config.language;
-	var pwdIsToken = false;
 	
 	//---- broadcasting ----
 	
@@ -25,6 +28,9 @@ function bytemind_build_account(){
 	function broadcastLogoutSuccess(){
 	}
 	function broadcastLogoutFail(){
+	}
+	//new api URL
+	function broadcastNewAccountURL(){
 	}
 	
 	//----------------------
@@ -62,13 +68,19 @@ function bytemind_build_account(){
 		box.innerHTML = "" +
 			'<div id="bytemind-login-language-selector"></div>' +
 			'<h2>' + ByteMind.local.g('welcome') + '</h2>' +
-			'<input id="bytemind-login-id" type="email" placeholder="Username" aria-label="Username">' +
-			'<input id="bytemind-login-pwd" type="password" placeholder="Password" aria-label="Password">' + 
+			'<input id="bytemind-login-id" type="email" placeholder="' + ByteMind.local.g('username') + '" aria-label="Username">' +
+			'<input id="bytemind-login-pwd" type="password" placeholder="' + ByteMind.local.g('password') + '" aria-label="Password">' + 
 			'<button id="bytemind-login-send">' + ByteMind.local.g('sendLogin') + '</button><br>' +
 			'<button id="bytemind-login-close">' + ByteMind.local.g('closeLogin') + '</button><br>' +
 			'<p id="bytemind-login-status"><br></p>';
 		$(parent).append(box);
-		
+		return box;
+	}
+	//Setup login box by adding button actions
+	Account.setupLoginBox = function(box){
+		if (!box){
+			return;
+		}
 		//login-button
 		var logSendBtn = document.getElementById("bytemind-login-send");
 		if (logSendBtn){
@@ -107,7 +119,36 @@ function bytemind_build_account(){
 			}));
 			*/
 		}
-		
+		//hostname input field
+		var $hostInput = $("#bytemind-login-host-name");
+		$hostInput.val(Account.apiURL);
+		$hostInput.off().on("change", function(){
+			var newHost = this.value;
+			Account.setApiURL(newHost);
+		});
+		//extend button
+		var $extendBtn = $('#bytemind-login-extend-btn');
+		$extendBtn.find('i').html('arrow_drop_down');
+		$extendBtn.off().on("click", function(){
+			var isVisible = ($extendBtn.find('i').html() == 'arrow_drop_up');
+			$('#bytemind-login-box').find('.bm-extendable').each(function(){
+				if (isVisible){
+					//$(this).fadeOut(150);
+					$(this).hide();
+				}else{
+					//$(this).fadeIn(300);
+					$(this).show();
+				}
+			});
+			if (isVisible){
+				$extendBtn.find('i').html('arrow_drop_down');
+			}else{
+				$extendBtn.find('i').html('arrow_drop_up');
+			}
+			//$('#bytemind-login-extend-box').hide();
+		});
+
+		box.dataset.bmIsActive = true;
 		return box;
 	}
 	
@@ -196,6 +237,9 @@ function bytemind_build_account(){
 	Account.toggleLoginBox = function(){
 		var box = document.getElementById("bytemind-login-box");
 		if (box){
+			if (!box.dataset.bmIsActive){
+				Account.setupLoginBox(box);
+			}
 			$("#bytemind-login-status").html('');		//reset status text
 			if (box.style.display == 'none'){
 				$(box).fadeIn(300);
@@ -210,7 +254,8 @@ function bytemind_build_account(){
 				}
 			}
 		}else{
-			Account.createLoginBox();
+			var box = Account.createLoginBox();
+			Account.setupLoginBox(box);
 			Account.toggleLoginBox();
 		}
 	}

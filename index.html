@@ -24,6 +24,31 @@
 	</style>
 </head>
 <body>
+	<!-- LOGIN -->
+	<div id="bytemind-login-box" style="display:none;">
+		<div id="bytemind-login-language-selector"></div>
+		<h2 data-bm-local-text="welcome">Welcome</h2>
+		<div id="bytemind-login-form">
+			<input id="bytemind-login-id" type="email" placeholder="Username" aria-label="Username" data-bm-local-placeholder="username">
+			<input id="bytemind-login-pwd" type="password" placeholder="Password" aria-label="Password" data-bm-local-placeholder="password">
+			<button id="bytemind-login-send" data-bm-local-text="sendLogin">Login</button><br>
+			<button id="bytemind-login-close" data-bm-local-text="closeLogin" class="bm-extendable" style="display:none;">Continue without login</button><br>
+		</div>
+		<!-- host selector -->
+		<div id="bytemind-host-name-box" class="bm-extendable" style="display:none;">
+			<label>Hostname:</label>
+			<input id="bytemind-login-host-name" type="url" placeholder="my.example.org/sepia" aria-label="Hostname">
+		</div>
+		<!-- status and links -->
+		<p id="bytemind-login-status"></p>
+		<div id="bytemind-login-links">
+			<a id="bytemind-login-license-btn" href="license.html" target="_blank" data-bm-local-text="license">License</a>
+			<a id="bytemind-login-policy-btn" href="privacy-policy.html" target="_blank" data-bm-local-text="data_privacy">Data Privacy</a>
+		</div>
+		<!-- extend button -->
+		<div id="bytemind-login-extend-box"><button id="bytemind-login-extend-btn"><i class="material-icons md-btn2">arrow_drop_down</i></button></div>
+	</div>
+	<!-- MAIN -->
 	<div id="bytemind-webapp-window">
 		<!-- Header -->
 		<div id="bytemind-webapp-header">
@@ -83,9 +108,10 @@
 		<div id="bytemind-fullscreen-overlay-btn" class="bytemind-button" style="display:none;"><i class="material-icons md-24">&#xE56B;</i></div>
 	</div>
 <!-- LOW PRIO STYLESHEETS -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,600" rel="stylesheet">
-<link rel="stylesheet" href="lib/bytemind-lib-1.0.3.css" title='main'>
+<link rel="stylesheet" href="css/googleMaterialIcons.css">
+<!--<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">-->
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+<link rel="stylesheet" href="lib/bytemind-lib-1.1.0.css" title='main'>
 <!-- JS -->
 <script src="lib/jquery-3.1.1.min.js"></script>
 <script src="lib/hammer.min.js"></script>

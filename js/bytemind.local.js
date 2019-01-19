@@ -60,6 +60,8 @@ function bytemind_build_strings(){
 	StringsDE.city = 'Stadt';
 	StringsDE.zip_code = 'PLZ';
 	StringsDE.country = 'Land';
+	StringsDE.license = 'Lizenz';
+	StringsDE.data_privacy = 'Datenschutz';
 	
 	//ENGLISH
 	StringsEN.welcome = 'Welcome';
@@ -115,6 +117,8 @@ function bytemind_build_strings(){
 	StringsEN.city = 'City';
 	StringsEN.zip_code = 'Zip';
 	StringsEN.country = 'Country';
+	StringsEN.license = 'License';
+	StringsEN.data_privacy = 'Data Privacy';
 	
 	var StringsLocale = {};
 	if (ByteMind.config.language.toLowerCase() === "de"){
@@ -131,6 +135,19 @@ function bytemind_build_strings(){
 	//write string
 	StringsLocale.w = function(name){
 		document.write(StringsLocale[name]);
+	}
+
+	//translate all
+	StringsLocale.translateAll = function(){
+		$('[data-bm-local-text]').each(function(){
+			$(this).html(StringsLocale.g(this.dataset.bmLocalText));
+		});
+		$('[data-bm-local-value]').each(function(){
+			$(this).val(StringsLocale.g(this.dataset.bmLocalText));
+		});
+		$('[data-bm-local-placeholder]').each(function(){
+			$(this).attr("placeholder", StringsLocale.g(this.dataset.bmLocalPlaceholder));
+		});
 	}
 	
 	return StringsLocale;

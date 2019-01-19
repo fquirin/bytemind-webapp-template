@@ -12,6 +12,7 @@
 * {
 	box-sizing: border-box;
 	font-family: 'Roboto', sans-serif;
+	/*font-family: sans-serif;*/
 	-webkit-text-size-adjust: 100%;
 }
 html {
