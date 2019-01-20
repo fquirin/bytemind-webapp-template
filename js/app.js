@@ -72,6 +72,9 @@ $(document).ready(function(){
 			$('#bytemind-webapp-top-bar').toggleClass('hide');
 			$('#bytemind-webapp-footer').toggleClass('hide');
 			$('#bytemind-fullscreen-overlay-btn').fadeToggle(300);
+			setTimeout(function(){
+				window.dispatchEvent(new Event('resize'));
+			}, 300);
 		});
 	});
 	
