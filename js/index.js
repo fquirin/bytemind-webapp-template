@@ -21,16 +21,11 @@ function buildPages(sideMenuEle){
 		headerTitle : "Settings",
 		description : "This is the settings page.",
 		onPageLoad : function(){
-			var content = document.getElementById('settings-page-content');
-			if (content.innerHTML === ''){
-				if (location.hostname === ""){
-					content.innerHTML = '<p>-- cannot dynamically load from file:// due to cross-domain restrictions. Please use webserver or localhost! --</p>';
-				}else{
-					$(content).load("settings.html #page-content", function(){
-						//done
-					});
-				}
-			}
+			var cssFiles = [];	//e.g. ["css/settings.css"]
+			var jsFiles = [];	//e.g. ["js/settings.js"]
+			ByteMind.page.import("settings", "settings.html", "#page-content", cssFiles, jsFiles, function(ele){
+				//Finished loading
+			});
 		}
 	}, sideMenuEle);
 	
