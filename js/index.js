@@ -45,17 +45,6 @@ function buildPages(sideMenuEle){
 function setupWebserviceClass(){
 	//Some required configuration
 	ByteMind.webservice.apiURL = "https://api.example.com";
-	ByteMind.account.tokenValidTime = 1000*60*60*24; 	//refresh of account.userToken required after e.g. 1 day
-
-	//Called during login success to store data (data=login API call answer as JSON).
-	//Overwrite as you need, keep left side (e.g. account.userId=...) to retain login logic
-	ByteMind.account.storeData = function(data){
-		var account = new Object();
-		account.userId = data.uid;
-		account.userToken = data.keyToken;
-		account.language = data.user_lang_code;
-		return account;
-	}
 }
 
 //---------Account:
