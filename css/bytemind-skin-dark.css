@@ -1,0 +1,81 @@
+/* -- main -- */
+html {
+	background: #000;
+}
+
+#bytemind-webapp-header {
+	background: #181818;
+	color: #eee;
+}
+#bytemind-header-accent {
+	background: #5683c4;
+    background: linear-gradient(to right, #44c8be 7%, #5683c4 33%, #7a2b87 66%, #1e245a 93%);
+}
+
+#bytemind-webapp-top-bar {
+	background: #121212;
+	color: #eee;
+}
+
+#bytemind-webapp-main {
+	background: #121212;
+	color: #eee;
+}
+
+#bytemind-webapp-footer {
+	background: #181818;
+	color: #eee;
+}
+
+#bytemind-fullscreen-overlay-btn {
+    background: #202020;
+    color: #eee;
+}
+
+/* -- popup -- */
+
+#bytemind-popup-message {
+	background-color: #2F3035;
+	color: #fff;
+}
+#bytemind-popup-message button {
+	background-color: #44c8be;
+    color: #2f3035;
+}
+.bytemind-notouch-device #bytemind-popup-message button:hover {
+	background-color: #fff;
+	color: #2F3035;
+}
+
+/* -- side-menu -- */
+
+#bytemind-background-cover-layer {
+	background: rgba(0, 0, 0, 0.95);
+}
+
+.bytemind-side-menu-interlayer {
+	background-color: rgba(10, 10, 10, 0.90);
+}
+.bytemind-side-menu, .bytemind-side-menu-right {
+    background-color: #191919;
+	color: #eee;
+}
+.bytemind-nav-bar-button {
+	margin: 16px 16px !important;
+}
+
+/* -- login -- */
+
+#bytemind-login-box {
+	background-color: #191919;
+	border: 1px solid #212121;
+	color: #eee;
+}
+#bytemind-login-box button {
+	background-color: #44c8be;
+    color: #2f3035;
+}
+.bytemind-notouch-device #bytemind-login-box button:hover {
+	background-color: #fff;
+	color: #2F3035;
+}
